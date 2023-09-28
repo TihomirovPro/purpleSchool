@@ -1,0 +1,30 @@
+body {
+  color: #fff;
+  background: linear-gradient(180deg, #374151 0%, #111827 100%);
+}
+
+.header {
+
+}
+
+.header__container {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.content {
+  max-width: 896px;
+  margin: 0 auto;
+}
+
+.content *:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.footer {
+  text-align: center;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  opacity: 0.6;
+}
