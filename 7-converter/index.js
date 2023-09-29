@@ -8,28 +8,26 @@ function currencyCunverter(amount, currency, toCurrency) {
   const oneUSDInEUR = 0.9403;
   const oneEURInUSD = 1.0634;
 
-  if (currency === 'rub') {
-    switch (toCurrency) {
-      case 'eur': return amount * oneRUBInEUR;
-      case 'usd': return amount * oneRUBInUSD;
-      default: return null;
-    }
-  }
+  switch (currency) {
+    case 'rub':
+      switch (toCurrency) {
+        case 'eur': return amount * oneRUBInEUR;
+        case 'usd': return amount * oneRUBInUSD;
+        default: return null;
+      }
+    case 'eur':
+      switch (toCurrency) {
+        case 'rub': return amount * oneEURInRUB;
+        case 'usd': return amount * oneEURInUSD;
+        default: return null;
+      }
 
-  if (currency === 'eur') {
-    switch (toCurrency) {
-      case 'rub': return amount * oneEURInRUB;
-      case 'usd': return amount * oneEURInUSD;
-      default: return null;
-    }
-  }
-
-  if (currency === 'usd') {
-    switch (toCurrency) {
-      case 'rub': return amount * oneUSDInRUB;
-      case 'eur': return amount * oneUSDInEUR;
-      default: return null;
-    }
+    case 'usd':
+      switch (toCurrency) {
+        case 'rub': return amount * oneUSDInRUB;
+        case 'eur': return amount * oneUSDInEUR;
+        default: return null;
+      }
   }
 
   return null;
