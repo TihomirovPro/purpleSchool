@@ -1,30 +1,28 @@
-const arr = ['10-02-2022', 'текст', '11/12/2023', '00/13/2022', '41/12/2023'];
+const arr = ['10-02-2022', 'текст', '11/12/2023', '00/13/2022', '41/12/2023', '04/31/2022'];
 
 function getDate(arr) {
   const filterArr = arr
-    .map(el => {
-      const date1 = el.split('-');
-      const date2 = el.split('/');
-
-      if (date1.length === 3) return date1
-      if (date2.length === 3) return date2
-    })
     .filter(el => {
-      if (el) {
-        const [month, day, year] = el;
-
-        if (
-          +month <= 12 && +month > 0 &&
-          +day <= 31 && +day > 0 &&
-          typeof +year === 'number'
-        ) {
-          return true
-        }
-      }
+      if (
+        el.length === 10 &&
+        (el[2] === '-' || el[2] === '/') &&
+        (el[5] === '-' || el[5] === '/')
+      ) { return true }
 
       return false
     })
-    .map(el => el.join('-'))
+    .map(el => el.replaceAll('/', '-'))
+    .filter(el => {
+      const [day, month, year] = el.split('-')
+
+      if (+month <= 0 || +month > 12) { return false }
+      if (+day <= 0 || +day > 31) { return false }
+      if (typeof +year !== 'number' && year.length !== 4) { return false }
+      if ((+month === 4 || +month === 6 || +month === 9 || +month === 11) && +day > 30) {return false}
+      if ((+month === 2) && +day > 29) {return false}
+
+      return true
+    })
   
   return filterArr
 }
