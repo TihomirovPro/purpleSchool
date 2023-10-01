@@ -5,9 +5,9 @@ function isRemove (num) {
 
 function arrayClean(arr, fn) {
   
-  for (i in arr) {
-    if (fn(arr[i])) {
-      arr.splice(i, 1)
+  for (el of arr) {
+    if (fn(el)) {
+      arr.splice(arr.indexOf(el), 1)
     }
   }
 
