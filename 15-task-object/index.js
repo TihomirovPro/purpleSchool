@@ -3,7 +3,8 @@
 const toDoList = {
   tasks: [{title: 'Задача 1', id: 1, priority: 1}],
   addTask: function(title, priority) {
-    this.tasks.push({title, priority, id: this.tasks.length});
+    const lastId = this.tasks.reduce((a, b) => a > b ? a : b).id;
+    this.tasks.push({title, priority, id: lastId + 1 });
     console.log(this.tasks);
   },
   removeTask: function(id) {
