@@ -3,13 +3,13 @@
 const toDoList = {
   tasks: [{title: 'Задача 1', id: 1, priority: 1}],
   addTask: function(title, priority) {
-    const lastId = this.tasks.reduce((a, b) => a > b ? a : b).id;
-    this.tasks.push({title, priority, id: lastId + 1 });
+    this.tasks.push({title, priority, id: this.tasks.length + 1 });
     console.log(this.tasks);
   },
   removeTask: function(id) {
     const task = this.tasks.find(el => el.id === id);
     this.tasks.splice(this.tasks.indexOf(task), 1);
+    this.tasks.map((el, i) => el.id = i+1);
     console.log(this.tasks);
   },
   updateTask: function(id, newTitle, newPriority) {
@@ -28,6 +28,6 @@ toDoList.addTask('Задача 2', 3)
 toDoList.addTask('Задача 3', 5)
 toDoList.addTask('Задача 4', 8)
 toDoList.addTask('Задача 5', 2)
-toDoList.removeTask(2)
+toDoList.removeTask(1)
 toDoList.updateTask(1, 'новое название', 8)
 toDoList.sortTasks()
