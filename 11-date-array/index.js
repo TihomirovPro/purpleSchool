@@ -2,15 +2,7 @@ const arr = ['10-02-2022', 'текст', '11/12/2023', '00/13/2022', '41/12/2023
 
 function getDate(arr) {
   const filterArr = arr
-    .filter(el => {
-      if (
-        el.length === 10 &&
-        (el[2] === '-' || el[2] === '/') &&
-        (el[5] === '-' || el[5] === '/')
-      ) { return true }
-
-      return false
-    })
+    .filter(el => { if ( el.length === 10 && (el[2] === '-' || el[2] === '/') && (el[5] === '-' || el[5] === '/') ) { return el } })
     .map(el => el.replaceAll('/', '-'))
     .filter(el => {
       const [day, month, year] = el.split('-')
