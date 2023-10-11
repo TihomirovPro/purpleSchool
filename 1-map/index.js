@@ -8,10 +8,14 @@ const arr = [
   { id: 3, name: 'Андрей' }
 ];
 
-const newArr = arr.reduce((acc, el) => {
-  if (acc.find(item => item.id === el.id)) return acc;
-  acc.push(el);
-  return acc;
-}, []);
+function arrToSet(arr) {
+  const newArr = [];
 
-console.log(new Set(newArr));
+  arr.map(el => {
+    if (!newArr.find(item => item.id === el.id)) newArr.push(el)
+  });
+
+  return new Set(newArr);
+}
+
+console.log(arrToSet(arr));
