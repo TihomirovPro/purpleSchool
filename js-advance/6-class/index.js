@@ -12,7 +12,7 @@ class Car {
   }
 
   set updateMileage(mileage) {
-    this.#mileage = mileage;
+    if (mileage && !isNaN(mileage)) this.#mileage = mileage;
   }
 
   info() {
@@ -20,7 +20,7 @@ class Car {
   }
 }
 
-const bmw = new Car('bmw', 'x5', '20000');
+const bmw = new Car('bmw', 'x5', 20000);
 
 bmw.info();
 bmw.updateMileage = 150000;
